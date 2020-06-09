@@ -2,21 +2,15 @@ import React, { Component } from "react";
 import HomePage from "./pages/HomePage/HomePage.component";
 import "./app.scss";
 import { Route, Switch } from "react-router-dom";
+import Shop from "./pages/Shop/Shop.component";
 
-const HatsPage = () => {
-	return (
-		<div>
-			<h1>Hats Page</h1>
-		</div>
-	);
-};
 class App extends Component {
 	render() {
 		return (
 			<div>
 				<Switch>
 					<Route exact path="/" component={HomePage} />
-					<Route path="/hats" component={HatsPage} />
+					<Route path="/shop" component={Shop} />
 				</Switch>
 			</div>
 		);
