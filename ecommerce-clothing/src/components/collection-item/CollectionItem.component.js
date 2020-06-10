@@ -1,15 +1,20 @@
 import React from "react";
 import "./collectionItem.styles.scss";
 import { withRouter } from "react-router-dom";
+import CustomButton from "../customButton/CustomButton.component";
+import { connect } from "react-redux";
+import { addItem } from "../../redux/cart/actions";
 
 const CollectionItem = ({
-	imageUrl,
-	price,
-	name,
+	item,
 	history,
 	match,
 	routeName,
+	addItem,
+	button,
 }) => {
+	const { name, price, imageUrl } = item;
+
 	return (
 		<div
 			className="collection-item"
@@ -24,8 +29,18 @@ const CollectionItem = ({
 
 				<span className="price">{price}</span>
 			</div>
+			{button ? (
+				<CustomButton onClick={() => addItem({ ...item })} inverted>
+					{" "}
+					Add to cart
+				</CustomButton>
+			) : null}
 		</div>
 	);
 };
 
-export default withRouter(CollectionItem);
+const dispatchToProps = (dispatch) => ({
+	addItem: (item) => dispatch(addItem(item)),
+});
+
+export default connect(null, dispatchToProps)(withRouter(CollectionItem));

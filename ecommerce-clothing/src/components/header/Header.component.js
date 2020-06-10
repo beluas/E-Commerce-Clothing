@@ -35,9 +35,9 @@ const Header = ({ currentUser, showCart }) => {
 					</Link>
 				)}
 
-				<Link className="option" to="/">
+				<div className="option">
 					<CartIcon />
-				</Link>
+				</div>
 			</div>
 			{showCart ? <CartDropdown /> : ""}
 		</div>
@@ -45,8 +45,8 @@ const Header = ({ currentUser, showCart }) => {
 };
 
 const stateToProps = ({ user: { currentUser }, cart: { showCart } }) => ({
-	currentUser: currentUser,
-	showCart: showCart,
+	currentUser,
+	showCart,
 });
 
 export default connect(stateToProps, null)(Header);

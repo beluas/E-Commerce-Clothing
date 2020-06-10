@@ -9,11 +9,12 @@ const CollectionPreview = ({ items, title, routeName }) => {
 			<div className="preview">
 				{items
 					.filter((item, id) => id < 4)
-					.map(({ id, ...itemProps }) => (
+					.map((item) => (
 						<CollectionItem
-							key={id}
-							{...itemProps}
+							key={item.id}
+							item={item}
 							routeName={routeName}
+							button
 						/>
 					))}
 			</div>
