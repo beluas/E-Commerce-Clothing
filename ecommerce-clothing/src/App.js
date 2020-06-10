@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import HomePage from "./pages/HomePage/HomePage.component";
 import "./app.scss";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, Redirect } from "react-router-dom";
 import Shop from "./pages/Shop/Shop.component";
 import Header from "./components/header/Header.component";
-import SignInSignUp from "./pages/Sign-in-and-Sign-up/SignIn-SignUp.component";
 import { auth, createUserProfileDocument } from "./firebase/firebase.utils";
 import { setCurrentUser } from "./redux/user/actions";
 import { connect } from "react-redux";
+import SignIn from "./components/sign-in/SignIn.component";
 
 class App extends Component {
 	state = {
@@ -44,14 +44,26 @@ class App extends Component {
 				<Switch>
 					<Route exact path="/" component={HomePage} />
 					<Route path="/shop" component={Shop} />
-					<Route path="/sign-in" component={SignInSignUp} />
+					<Route
+						exact
+						path="/sign-in"
+						render={() =>
+							this.props.currentUser ? (
+								<Redirect to="/" />
+							) : (
+								<SignIn />
+							)
+						}
+					/>
 				</Switch>
 			</div>
 		);
 	}
 }
 
-const stateToProps = (state) => ({});
+const stateToProps = ({ user }) => ({
+	currentUser: user.currentUser,
+});
 
 const dispatchToProps = {
 	setCurrentUser,
