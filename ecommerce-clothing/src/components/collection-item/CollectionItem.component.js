@@ -29,12 +29,10 @@ const CollectionItem = ({
 
 				<span className="price">{price}</span>
 			</div>
-			{button ? (
-				<CustomButton onClick={() => addItem({ ...item })} inverted>
-					{" "}
-					Add to cart
-				</CustomButton>
-			) : null}
+
+			<CustomButton onClick={() => addItem({ ...item })} inverted>
+				Add to cart
+			</CustomButton>
 		</div>
 	);
 };
