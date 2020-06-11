@@ -3,7 +3,7 @@ import {
 	ADD_ITEM,
 	REMOVE_ITEM,
 	INCREASE_QUANTITY,
-	//DECREASE_QUANTITY,
+	DECREASE_QUANTITY,
 } from "./actions.types";
 
 export const showCart = () => ({
@@ -15,7 +15,7 @@ export const addItem = (item) => ({
 	payload: item,
 });
 
-export const removeItem = (item) => ({
+export const clearItem = (item) => ({
 	type: REMOVE_ITEM,
 	payload: item,
 });
@@ -25,7 +25,7 @@ export const increaseQuantity = (item) => ({
 	payload: item,
 });
 
-// export const decreaseQuantity = (item) => ({
-// 	type: DECREASE_QUANTITY,
-// 	payload: item,
-// });
+export const decreaseQuantity = (item) => ({
+	type: DECREASE_QUANTITY,
+	payload: item,
+});

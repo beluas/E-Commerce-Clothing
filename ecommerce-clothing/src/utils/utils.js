@@ -16,7 +16,11 @@ export const addItemToCart = (items, newItem) => {
 	return [...items, { ...newItem, quantity: 1 }];
 };
 
-export const removeItem = (items, itemToRemove) => {
+export const clearItem = (items, itemToClear) => {
+	return items.filter((item) => item.id !== itemToClear.id);
+};
+
+export const decreaseQuantity = (items, itemToRemove) => {
 	const existingItem = items.find((item) => item.id === itemToRemove.id);
 
 	if (existingItem.quantity === 1) {
@@ -41,13 +45,3 @@ export const increaseQuantity = (items, itemToIncrease) => {
 		}
 	});
 };
-
-// export const decreaseQuantity = (items, itemToDecrease) => {
-// 	return items.map((item) => {
-// 		if (item.id === itemToDecrease.id) {
-// 			return { ...item, quantity: item.quantity - 1 };
-// 		} else {
-// 			return item;
-// 		}
-// 	});
-// };
