@@ -3,6 +3,11 @@ import "./cartIcon.styles.scss";
 import { ReactComponent as ShoppingIcon } from "../../assets/cart.svg";
 import { connect } from "react-redux";
 import { showCart } from "../../redux/cart/actions";
+import {
+	/*selectCartItems,
+	selectItemsCount,*/
+	selectTotItems,
+} from "../../redux/cart/cartSelectors";
 
 const CartIcon = ({ showCart, totItems }) => {
 	return (
@@ -25,8 +30,10 @@ const dispatchToProps = dispatch =>
 
 */
 
-const stateToProps = ({ cart: { totItems } }) => ({
-	totItems,
+const stateToProps = (state) => ({
+	//totItems: selectItemsCount(state),
+	//OR
+	totItems: selectTotItems(state),
 });
 
 export default connect(stateToProps, dispatchToProps)(CartIcon);
