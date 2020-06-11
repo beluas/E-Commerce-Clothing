@@ -8,6 +8,7 @@ import CartIcon from "../cart-icon/CartIcon.component";
 import CartDropdown from "../cartDropdown/CartDropdown.component";
 import { selectShowCart } from "../../redux/cart/cartSelectors";
 import { selectCurrentUser } from "../../redux/user/userSelector";
+import { createStructuredSelector } from "reselect";
 
 const signOut = () => {
 	auth.signOut();
@@ -47,9 +48,9 @@ const Header = ({ currentUser, showCart }) => {
 	);
 };
 
-const stateToProps = (state) => ({
-	currentUser: selectCurrentUser(state),
-	showCart: selectShowCart(state),
+const stateToProps = createStructuredSelector({
+	currentUser: selectCurrentUser,
+	showCart: selectShowCart,
 });
 
 export default connect(stateToProps, null)(Header);
