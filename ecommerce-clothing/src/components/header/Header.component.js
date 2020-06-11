@@ -47,11 +47,9 @@ const Header = ({ currentUser, showCart }) => {
 	);
 };
 
-const stateToProps = (state) => {
-	return {
-		currentUser: selectCurrentUser(state),
-		showCart: selectShowCart(state),
-	};
-};
+const stateToProps = (state) => ({
+	currentUser: selectCurrentUser(state),
+	showCart: selectShowCart(state),
+});
 
 export default connect(stateToProps, null)(Header);

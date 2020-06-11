@@ -9,6 +9,8 @@ import {
 	selectTotItems,
 } from "../../redux/cart/cartSelectors";
 
+import { createStructuredSelector } from "reselect";
+
 const CartIcon = ({ showCart, totItems }) => {
 	return (
 		<div className="cart-icon" onClick={showCart}>
@@ -30,10 +32,10 @@ const dispatchToProps = dispatch =>
 
 */
 
-const stateToProps = (state) => ({
-	//totItems: selectItemsCount(state),
+const stateToProps = createStructuredSelector({
+	//totItems: selectItemsCount,
 	//OR
-	totItems: selectTotItems(state),
+	totItems: selectTotItems,
 });
 
 export default connect(stateToProps, dispatchToProps)(CartIcon);
