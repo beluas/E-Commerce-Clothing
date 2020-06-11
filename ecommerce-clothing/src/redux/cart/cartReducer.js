@@ -1,5 +1,16 @@
-import { SHOW_CART, ADD_ITEM } from "./actions.types";
-import { addItemToCart } from "../../utils/utils";
+import {
+	SHOW_CART,
+	ADD_ITEM,
+	REMOVE_ITEM,
+	//DECREASE_QUANTITY,
+	INCREASE_QUANTITY,
+} from "./actions.types";
+import {
+	addItemToCart,
+	removeItem,
+	increaseQuantity,
+	//decreaseQuantity,
+} from "../../utils/utils";
 
 const INITIAL_STATE = {
 	items: [],
@@ -19,6 +30,27 @@ export const cartReducer = (state = INITIAL_STATE, { type, payload }) => {
 			return {
 				...state,
 				items: addItemToCart(state.items, payload),
+				totItems: state.totItems + 1,
+			};
+
+		case REMOVE_ITEM:
+			return {
+				...state,
+				items: removeItem(state.items, payload),
+				totItems: state.totItems - 1,
+			};
+
+		// case DECREASE_QUANTITY:
+		// 	return {
+		// 		...state,
+		// 		items: decreaseQuantity(state.items, payload),
+		// 		totItems: state.totItems - 1,
+		// 	};
+
+		case INCREASE_QUANTITY:
+			return {
+				...state,
+				items: increaseQuantity(state.items, payload),
 				totItems: state.totItems + 1,
 			};
 
