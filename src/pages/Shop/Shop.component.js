@@ -5,7 +5,6 @@ import Collection from "../collection/Collection.component";
 import CollectionOverview from "../../components/collections-overview/CollectionOverview.component";
 
 const Shop = ({ match }) => {
-	console.log(match);
 	return (
 		<div className="shop-page">
 			<Route

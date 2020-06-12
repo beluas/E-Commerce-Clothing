@@ -15,7 +15,6 @@ const signOut = () => {
 };
 
 const Header = ({ currentUser, showCart }) => {
-	console.log("rendered");
 	return (
 		<div className="header">
 			<Link className="logo-container" to="/">

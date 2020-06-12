@@ -8,6 +8,7 @@ const StripeCheckoutButton = ({ price }) => {
 
 	const onToken = (token) => {
 		alert("Payment Successful");
+
 		console.log(token);
 	};
 
