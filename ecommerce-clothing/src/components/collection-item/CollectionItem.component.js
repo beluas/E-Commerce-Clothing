@@ -11,7 +11,7 @@ const CollectionItem = ({ item, history, match, routeName, addItem }) => {
 	return (
 		<div
 			className="collection-item"
-			onClick={() => history.push(`${match.url}/${routeName}`)}
+			onClick={() => routeName ? history.push(`${match.url}/${routeName}`) :  history.push(`${match.url}/${item.name}`)}
 		>
 			<div
 				className="image"

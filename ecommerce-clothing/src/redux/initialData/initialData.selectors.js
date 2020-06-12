@@ -11,3 +11,14 @@ export const selectCollections = createSelector(
 	[selectInitialData],
 	(initialData) => initialData.collections
 );
+
+export const selectCollectionForPreview = createSelector(
+	[selectInitialData],
+	(initialData) => Object.values(initialData.collections)
+);
+
+export const selectCollection = (collectionURLParam) =>
+	createSelector(
+		[selectCollections],
+		(collections) => collections[collectionURLParam]
+	);
