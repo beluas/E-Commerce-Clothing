@@ -11,7 +11,11 @@ const CollectionItem = ({ item, history, match, routeName, addItem }) => {
 	return (
 		<div
 			className="collection-item"
-			onClick={() => routeName ? history.push(`${match.url}/${routeName}`) :  history.push(`${match.url}/${item.name}`)}
+			onClick={() =>
+				routeName
+					? history.push(`${match.url}/${routeName}`)
+					: history.push(`${match.url}/${item.name}`)
+			}
 		>
 			<div
 				className="image"
@@ -20,7 +24,7 @@ const CollectionItem = ({ item, history, match, routeName, addItem }) => {
 			<div className="collection-footer">
 				<span className="name">{name}</span>
 
-				<span className="price">{price}</span>
+				<span className="price">{price} $ </span>
 			</div>
 
 			<CustomButton onClick={() => addItem({ ...item })} inverted>
