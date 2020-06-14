@@ -1,9 +1,9 @@
 import sections from "../../original";
-import { SHOP_DATA } from "../../shopData";
+import { UPDATE_COLLECTIONS } from "./initialData.types";
 
 const INITIAL_STATE = {
 	sections: sections,
-	collections: SHOP_DATA,
+	collections: [],
 };
 
 export const initialDataReducer = (
@@ -11,6 +11,12 @@ export const initialDataReducer = (
 	{ type, payload }
 ) => {
 	switch (type) {
+		case UPDATE_COLLECTIONS:
+			return {
+				...state,
+				collections: payload,
+			};
+
 		default:
 			return state;
 	}
