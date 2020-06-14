@@ -3,7 +3,7 @@ import { UPDATE_COLLECTIONS } from "./initialData.types";
 
 const INITIAL_STATE = {
 	sections: sections,
-	collections: [],
+	collections: null,
 };
 
 export const initialDataReducer = (

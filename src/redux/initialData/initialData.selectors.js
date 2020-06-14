@@ -13,8 +13,8 @@ export const selectCollections = createSelector(
 );
 
 export const selectCollectionForPreview = createSelector(
-	[selectInitialData],
-	(initialData) => Object.values(initialData.collections)
+	[selectCollections],
+	(collection) => (collection ? Object.values(collection) : [])
 );
 
 export const selectCollection = (collectionURLParam) =>

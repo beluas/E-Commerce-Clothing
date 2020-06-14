@@ -37,7 +37,7 @@ export const cartReducer = (state = INITIAL_STATE, { type, payload }) => {
 			return {
 				...state,
 				items: clearItem(state.items, payload),
-				totItems: state.totItems - 1,
+				totItems: state.totItems - payload.quantity,
 			};
 
 		case DECREASE_QUANTITY:
