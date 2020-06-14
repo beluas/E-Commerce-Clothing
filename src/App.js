@@ -4,35 +4,47 @@ import "./app.scss";
 import { Route, Switch, Redirect } from "react-router-dom";
 import Shop from "./pages/Shop/Shop.component";
 import Header from "./components/header/Header.component";
-import { auth, createUserProfileDocument } from "./firebase/firebase.utils";
+import {
+	auth,
+	createUserProfileDocument,
+	/*addCollectionAndDocuments,*/
+} from "./firebase/firebase.utils";
 import { setCurrentUser } from "./redux/user/actions";
 import { connect } from "react-redux";
 import SignInAndSignUp from "./pages/Sign-in-and-Sign-up/SignIn-SignUp.component";
 import { selectCurrentUser } from "./redux/user/userSelector";
 import { createStructuredSelector } from "reselect";
 import Checkout from "./pages/checkout/Checkout.component";
+//import { selectCollectionForPreview } from "./redux/initialData/initialData.selectors";
 
 class App extends Component {
-	state = {
-		currentUser: null,
-	};
-
 	unsubscribeFromAuth = null;
 
 	componentDidMount() {
+		const { setCurrentUser /*collectionsArray*/ } = this.props;
 		this.unsubscribeFromAuth = auth.onAuthStateChanged(async (userAuth) => {
 			if (userAuth) {
 				const userRef = await createUserProfileDocument(userAuth);
 
 				userRef.onSnapshot((snapShot) => {
-					this.props.setCurrentUser({
+					setCurrentUser({
 						id: snapShot.id,
 						...snapShot.data(),
 					});
 				});
 			}
 
-			this.props.setCurrentUser(userAuth);
+			setCurrentUser(userAuth);
+
+			// Code to add Products to Firebase DB
+
+			// addCollectionAndDocuments(
+			// 	"collections",
+			// 	collectionsArray.map(({ title, items }) => ({
+			// 		title,
+			// 		items,
+			// 	}))
+			// );
 		});
 	}
 
@@ -67,6 +79,7 @@ class App extends Component {
 
 const stateToProps = createStructuredSelector({
 	currentUser: selectCurrentUser,
+	//collectionsArray: selectCollectionForPreview,
 });
 
 const dispatchToProps = {

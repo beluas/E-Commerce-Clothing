@@ -11,11 +11,11 @@ const CollectionItem = ({ item, history, match, routeName, addItem }) => {
 	return (
 		<div
 			className="collection-item"
-			onClick={() =>
-				routeName
-					? history.push(`${match.url}/${routeName}`)
-					: history.push(`${match.url}/${item.name}`)
-			}
+			// onClick={() =>
+			// 	routeName
+			// 		? history.push(`${match.url}/${routeName}`)
+			// 		: history.push(`${match.url}/${item.name}`)
+			// }
 		>
 			<div
 				className="image"
@@ -26,10 +26,11 @@ const CollectionItem = ({ item, history, match, routeName, addItem }) => {
 
 				<span className="price">{price} $ </span>
 			</div>
-
-			<CustomButton onClick={() => addItem({ ...item })} inverted>
-				Add to cart
-			</CustomButton>
+			<div className="custom-button">
+				<CustomButton onClick={() => addItem({ ...item })} inverted>
+					Add to cart
+				</CustomButton>
+			</div>
 		</div>
 	);
 };

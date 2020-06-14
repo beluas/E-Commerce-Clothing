@@ -8,30 +8,37 @@ import {
 import { createStructuredSelector } from "reselect";
 import CheckoutItem from "../../components/checkout-item/CheckoutItem.component";
 import StripeCheckoutButton from "../../components/stripeButton/StripeButton.component";
+import {
+	CheckoutPageContainer,
+	CheckoutHeaderContainer,
+	HeaderBlockContainer,
+	TotalContainer,
+	TextWarningContainer,
+} from "./checkout.styles";
 
 const Checkout = ({ items, total }) => {
 	return (
-		<div className="checkout-page">
-			<div className="checkout-header">
-				<div className="header-block">
+		<CheckoutPageContainer>
+			<CheckoutHeaderContainer>
+				<HeaderBlockContainer>
 					<span>Product</span>
-				</div>
-				<div className="header-block">
+				</HeaderBlockContainer>
+				<HeaderBlockContainer>
 					<span>Description</span>
-				</div>
+				</HeaderBlockContainer>
 
-				<div className="header-block">
+				<HeaderBlockContainer>
 					<span>Quantity</span>
-				</div>
+				</HeaderBlockContainer>
 
-				<div className="header-block">
+				<HeaderBlockContainer>
 					<span>Price</span>
-				</div>
+				</HeaderBlockContainer>
 
-				<div className="header-block">
+				<HeaderBlockContainer>
 					<span>Remove</span>
-				</div>
-			</div>
+				</HeaderBlockContainer>
+			</CheckoutHeaderContainer>
 			{items.length ? (
 				items.map((item) => (
 					<CheckoutItem key={item.id} total={total} item={item} />
@@ -40,16 +47,16 @@ const Checkout = ({ items, total }) => {
 				<span className="empty-message">Your cart is empty</span>
 			)}
 
-			<div className="total">
+			<TotalContainer>
 				<span>TOTAL: ${total}</span>
-			</div>
+			</TotalContainer>
 			<StripeCheckoutButton price={total} />
-			<div className="test-warning">
+			<TextWarningContainer>
 				* Please use the following test credit card for payments
 				<br />
 				4242 4242 4242 4242 - Exp: 01/22 - CVV : 123
-			</div>
-		</div>
+			</TextWarningContainer>
+		</CheckoutPageContainer>
 	);
 };
 

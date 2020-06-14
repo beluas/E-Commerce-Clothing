@@ -1,8 +1,13 @@
 import React from "react";
 import CollectionItem from "../../components/collection-item/CollectionItem.component";
-import "./collection.styles.scss";
 import { selectCollection } from "../../redux/initialData/initialData.selectors";
 import { connect } from "react-redux";
+import {
+	CollectionItemContainer,
+	CollectionPageContainer,
+	TitleContainer,
+	ItemsContainer,
+} from "./collection.styles";
 
 const Collection = ({ collectionToShow }) => {
 	if (!collectionToShow) {
@@ -11,14 +16,16 @@ const Collection = ({ collectionToShow }) => {
 
 	const { items, title } = collectionToShow;
 	return (
-		<div className="collection-page">
-			<h2 className="title">{title}</h2>
-			<div className="items">
+		<CollectionPageContainer>
+			<TitleContainer>{title}</TitleContainer>
+			<ItemsContainer>
 				{items.map((item) => (
-					<CollectionItem key={item.id} item={item} />
+					<CollectionItemContainer key={item.id}>
+						<CollectionItem item={item} />
+					</CollectionItemContainer>
 				))}
-			</div>
-		</div>
+			</ItemsContainer>
+		</CollectionPageContainer>
 	);
 };
 

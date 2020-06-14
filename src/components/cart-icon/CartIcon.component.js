@@ -1,5 +1,4 @@
 import React from "react";
-import "./cartIcon.styles.scss";
 import { ReactComponent as ShoppingIcon } from "../../assets/cart.svg";
 import { connect } from "react-redux";
 import { showCart } from "../../redux/cart/actions";
@@ -9,14 +8,23 @@ import {
 	selectTotItems,
 } from "../../redux/cart/cartSelectors";
 
+import {
+	CartIconContainer,
+	ShoppingIconContainer,
+	ItemCountContainer,
+} from "./cartIcon.styles";
+
 import { createStructuredSelector } from "reselect";
 
 const CartIcon = ({ showCart, totItems }) => {
 	return (
-		<div className="cart-icon" onClick={showCart}>
-			<ShoppingIcon className="shopping-icon" />
-			<span className="item-count"> {totItems} </span>
-		</div>
+		<CartIconContainer onClick={showCart}>
+			<ShoppingIconContainer>
+				{" "}
+				<ShoppingIcon />
+			</ShoppingIconContainer>
+			<ItemCountContainer> {totItems} </ItemCountContainer>
+		</CartIconContainer>
 	);
 };
 
