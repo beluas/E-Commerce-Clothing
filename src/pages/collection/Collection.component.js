@@ -10,10 +10,6 @@ import {
 } from "./collection.styles";
 
 const Collection = ({ collectionToShow }) => {
-	if (!collectionToShow) {
-		return <h1>404</h1>;
-	}
-
 	const { items, title } = collectionToShow;
 	return (
 		<CollectionPageContainer>
